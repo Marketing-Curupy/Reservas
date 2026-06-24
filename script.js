@@ -1,33 +1,32 @@
-```js
 let slideAtual = 0;
 let tipoConsultaAtual = "";
 let intervaloCarrossel = null;
 
 const informacoesPreConsulta = {
   Hospedagem: [
-    "A reserva depende da disponibilidade da data desejada.",
-    "A hospedagem inclui café da manhã e acesso ao parque aquático no dia da entrada e no dia da saída.",
-    "Check-in a partir das 14h e check-out até 11h.",
-    "Crianças de 0 a 4 anos não pagam mediante apresentação de documento. A partir de 5 anos é cobrado valor integral.",
-    "A confirmação da reserva exige 50% do valor antecipado."
+    "Café da manhã incluso.",
+    "Acesso ao parque aquático no dia da entrada e saída.",
+    "Check-in a partir das 14h.",
+    "Check-out até 11h.",
+    "Crianças de 0 a 4 anos não pagam mediante documento.",
+    "Reserva sujeita à disponibilidade e confirmação do pagamento."
   ],
 
   Bangalô: [
-    "A reserva depende da disponibilidade da data desejada.",
-    "O bangalô é utilizado das 09h às 17h.",
-    "A entrada do parque não está inclusa para não associados.",
-    "Para aniversário, é permitido 1 bolo e 100 brigadeiros.",
-    "Demais alimentos e bebidas não são permitidos. Utensílios devem ser trazidos pelo visitante.",
-    "A confirmação da reserva exige 50% do valor antecipado."
+    "Uso exclusivo das 09h às 17h.",
+    "Caixa térmica inclusa.",
+    "Entrada do parque não inclusa para não associados.",
+    "Permitido 1 bolo e até 100 brigadeiros para aniversários.",
+    "Reserva confirmada mediante pagamento antecipado."
   ],
 
   Quiosque: [
-    "A reserva depende da disponibilidade da data desejada.",
-    "O quiosque é utilizado das 09h às 17h.",
-    "A entrada do parque é paga à parte para não associados.",
-    "Alimentos são permitidos somente para consumo no espaço reservado do quiosque.",
-    "Bebidas não são permitidas e devem ser adquiridas dentro do parque.",
-    "A confirmação da reserva exige 50% do valor antecipado."
+    "Uso exclusivo das 09h às 17h.",
+    "Caixa térmica inclusa.",
+    "Alimentos permitidos para consumo no espaço.",
+    "Bebidas devem ser adquiridas dentro do parque.",
+    "Entrada do parque não inclusa para não associados.",
+    "Reserva confirmada mediante pagamento antecipado."
   ]
 };
 
@@ -37,14 +36,24 @@ function mostrarSlide(index) {
 
   if (!slides.length) return;
 
+  if (index < 0 || index >= slides.length) {
+    index = 0;
+  }
+
   slideAtual = index;
 
   slides.forEach((slide, i) => {
-    slide.classList.toggle("ativo", i === index);
+    const ativo = i === index;
+
+    slide.classList.toggle("ativo", ativo);
+    slide.setAttribute("aria-hidden", ativo ? "false" : "true");
   });
 
   botoes.forEach((botao, i) => {
-    botao.classList.toggle("ativo", i === index);
+    const ativo = i === index;
+
+    botao.classList.toggle("ativo", ativo);
+    botao.setAttribute("aria-current", ativo ? "true" : "false");
   });
 }
 
@@ -59,14 +68,22 @@ function iniciarCarrossel() {
   const total = document.querySelectorAll(".hero-slide").length;
   if (total <= 1) return;
 
-  intervaloCarrossel = setInterval(proximoSlide, 5000);
-}
-
-function reiniciarCarrossel() {
   if (intervaloCarrossel) {
     clearInterval(intervaloCarrossel);
   }
 
+  intervaloCarrossel = setInterval(proximoSlide, 5000);
+}
+
+function pausarCarrossel() {
+  if (intervaloCarrossel) {
+    clearInterval(intervaloCarrossel);
+    intervaloCarrossel = null;
+  }
+}
+
+function reiniciarCarrossel() {
+  pausarCarrossel();
   iniciarCarrossel();
 }
 
@@ -171,23 +188,18 @@ function enviarConsultaWhatsApp(event) {
 
   const mensagem =
     `Olá! Quero consultar disponibilidade no Curupy.\n\n` +
-    `Tipo da solicitação: ${valorCampo("tipoReserva")}\n` +
-    `Associado: ${valorCampo("associado")}\n` +
-    `Data desejada: ${valorCampo("dataDesejada")}\n` +
-    `Data alternativa: ${valorCampo("dataAlternativa") || "Não informada"}\n` +
-    `Quantidade de pessoas: ${valorCampo("quantidadePessoas")}\n\n` +
-    `Nome completo: ${valorCampo("nomeCompleto")}\n` +
-    `Data de nascimento: ${valorCampo("nascimento") || "Não informada"}\n` +
-    `CPF: ${valorCampo("cpf") || "Não informado"}\n` +
-    `Telefone: ${valorCampo("telefone")}\n` +
+    `🔗 Origem: Página de Reservas Curupy\n\n` +
+    `📌 Tipo: ${valorCampo("tipoReserva")}\n` +
+    `👤 Associado: ${valorCampo("associado")}\n` +
+    `📅 Data desejada: ${valorCampo("dataDesejada")}\n` +
+    `📅 Data alternativa: ${valorCampo("dataAlternativa") || "Não informada"}\n` +
+    `👥 Quantidade de pessoas: ${valorCampo("quantidadePessoas")}\n\n` +
+    `📝 Dados para contato:\n` +
+    `Nome: ${valorCampo("nomeCompleto")}\n` +
+    `WhatsApp: ${valorCampo("telefone")}\n` +
     `E-mail: ${valorCampo("email") || "Não informado"}\n\n` +
-    `Endereço: ${valorCampo("endereco") || "Não informado"}\n` +
-    `Bairro: ${valorCampo("bairro") || "Não informado"}\n` +
-    `Cidade: ${valorCampo("cidade") || "Não informada"}\n` +
-    `CEP: ${valorCampo("cep") || "Não informado"}\n\n` +
-    `Observações: ${valorCampo("observacoes") || "Nenhuma"}\n\n` +
-    `Declaração: li e estou ciente das informações principais da reserva.\n` +
-    `Estou ciente de que o envio desta solicitação não garante a reserva e que a equipe irá verificar a disponibilidade.`;
+    `💬 Observações:\n${valorCampo("observacoes") || "Nenhuma"}\n\n` +
+    `Estou ciente de que esta solicitação não garante a reserva e depende da disponibilidade.`;
 
   window.open(
     `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`,
@@ -196,7 +208,17 @@ function enviarConsultaWhatsApp(event) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  mostrarSlide(0);
   iniciarCarrossel();
+
+  const hero = document.querySelector(".hero-reservas");
+
+  if (hero) {
+    hero.addEventListener("mouseenter", pausarCarrossel);
+    hero.addEventListener("mouseleave", iniciarCarrossel);
+    hero.addEventListener("touchstart", pausarCarrossel, { passive: true });
+    hero.addEventListener("touchend", iniciarCarrossel);
+  }
 
   document.querySelectorAll(".hero-controles button").forEach((botao, index) => {
     botao.addEventListener("click", () => {
@@ -220,4 +242,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-```
