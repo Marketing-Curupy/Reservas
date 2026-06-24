@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -6,13 +8,15 @@
   <title>Reservas Curupy | Hospedagem, Bangalôs e Quiosques</title>
   <meta name="description" content="Consulte informações e disponibilidade para hospedagem, bangalôs e quiosques no Curupy Acqua Park." />
 
-  <link rel="stylesheet" href="estilo.css" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="estilo.css" />
 </head>
+
 <body>
 
 <header class="reservas-topo">
@@ -25,64 +29,111 @@
       <a href="#hospedagem">Hospedagem</a>
       <a href="#bangalos">Bangalôs</a>
       <a href="#quiosques">Quiosques</a>
-      <button onclick="abrirAjuda()">Dúvidas</button>
+      <button type="button" onclick="abrirAjuda()">Dúvidas</button>
     </div>
   </nav>
 </header>
 
 <main>
+
   <section class="hero-reservas">
+
     <div class="hero-slide ativo" style="--foto:url('assets/hero-hospedagem.png')">
       <div class="hero-overlay"></div>
+
       <div class="hero-conteudo">
-        ```html
-<span class="hero-tag">Hospedagem Curupy</span>
+        <span class="hero-tag">Hospedagem Curupy</span>
 
-<h1>Viva momentos inesquecíveis</h1>
+        <h1>Hospede-se no Curupy</h1>
 
-<p>Chalés completos com café da manhã e acesso ao parque aquático.</p>
+        <p>
+          Chalés completos com café da manhã e acesso ao parque aquático.
+        </p>
 
-<div class="hero-beneficios hero-beneficios-card">
-  <span>💦 Parque incluso</span>
-  <span>☕ Café da manhã</span>
-  <span>🏡 Até 4 pessoas</span>
-</div>
+        <div class="hero-beneficios-card">
+          <div class="hero-beneficio">
+            <i class="fa-regular fa-user"></i>
+            <span>Até 4 hóspedes</span>
+          </div>
 
-<a class="btn-principal" href="#hospedagem">Consultar disponibilidade</a>
-```
+          <div class="hero-beneficio">
+            <i class="fa-solid fa-mug-hot"></i>
+            <span>Café da manhã incluso</span>
+          </div>
 
-
-    <div class="hero-slide" style="--foto:url('assets/hero-bangalo.png)">
-      <div class="hero-overlay"></div>
-      <div class="hero-conteudo">
-        <span class="hero-tag">Bangalôs</span>
-        <h1>Seu espaço reservado para relaxar</h1>
-        <p>Um ambiente privativo para aproveitar o dia no parque com mais conforto.</p>
-
-        <div class="hero-beneficios">
-          <span>🌴 Espaço privativo</span>
-          <span>Próximo às atrações aquáticas</span>
-          <span>🪢 Rede inclusa</span>
+          <div class="hero-beneficio">
+            <i class="fa-solid fa-water"></i>
+            <span>Parque aquático incluso</span>
+          </div>
         </div>
 
-        <a class="btn-principal" href="#bangalos">Saiba mais</a>
+        <a class="btn-principal" href="#hospedagem">Consultar disponibilidade</a>
       </div>
     </div>
 
-    <div class="hero-slide" style="--foto:url('assets/reservas/quiosques.jpg')">
+    <div class="hero-slide" style="--foto:url('assets/hero-bangalo.png')">
       <div class="hero-overlay"></div>
-      <div class="hero-conteudo">
-        <span class="hero-tag">Quiosques</span>
-        <h1>Um espaço exclusivo para reunir família e amigos.</h1>
-        <p>O espaço ideal para curtir o dia com família e amigos, fazer um churrasco e aproveitar momentos especiais.</p>
 
-        <div class="hero-beneficios">
-          <span>🍖 Espaço exclusivo</span>
-          <span>🧊 Caixa térmica</span>
-          <span>⏰ 09h às 17h</span>
+      <div class="hero-conteudo">
+        <span class="hero-tag">Bangalôs</span>
+
+        <h1>Seu espaço reservado para relaxar</h1>
+
+        <p>
+          Um ambiente privativo para aproveitar o dia no parque com mais conforto.
+        </p>
+
+        <div class="hero-beneficios-card">
+          <div class="hero-beneficio">
+            <i class="fa-regular fa-circle-user"></i>
+            <span>Espaço privativo</span>
+          </div>
+
+          <div class="hero-beneficio">
+            <i class="fa-solid fa-box-open"></i>
+            <span>Caixa térmica inclusa</span>
+          </div>
+
+          <div class="hero-beneficio">
+            <i class="fa-regular fa-clock"></i>
+            <span>Uso das 09h às 17h</span>
+          </div>
         </div>
 
-        <a class="btn-principal" href="#quiosques">Saiba mais</a>
+        <a class="btn-principal" href="#bangalos">Conhecer bangalôs</a>
+      </div>
+    </div>
+
+    <div class="hero-slide" style="--foto:url('assets/hero-quiosques.png')">
+      <div class="hero-overlay"></div>
+
+      <div class="hero-conteudo">
+        <span class="hero-tag">Quiosques</span>
+
+        <h1>Reúna família e amigos</h1>
+
+        <p>
+          Espaço exclusivo para curtir o dia no Curupy com mais privacidade.
+        </p>
+
+        <div class="hero-beneficios-card">
+          <div class="hero-beneficio">
+            <i class="fa-solid fa-people-group"></i>
+            <span>Espaço reservado</span>
+          </div>
+
+          <div class="hero-beneficio">
+            <i class="fa-solid fa-box-open"></i>
+            <span>Caixa térmica inclusa</span>
+          </div>
+
+          <div class="hero-beneficio">
+            <i class="fa-regular fa-clock"></i>
+            <span>Uso das 09h às 17h</span>
+          </div>
+        </div>
+
+        <a class="btn-principal" href="#quiosques">Conhecer quiosques</a>
       </div>
     </div>
 
@@ -99,9 +150,10 @@
         <span class="eyebrow">Reservas Curupy</span>
         <h2>Escolha sua experiência</h2>
       </div>
+
       <p>
-        Para facilitar sua escolha, organizamos as principais opções de reserva do Curupy:
-        hospedagem, bangalôs e quiosques. Leia os pontos principais e consulte a disponibilidade pelo WhatsApp.
+        Organizamos as principais opções de reserva do Curupy para facilitar sua escolha:
+        hospedagem, bangalôs e quiosques. Veja os pontos principais e consulte a disponibilidade pelo WhatsApp.
       </p>
     </div>
   </section>
@@ -115,6 +167,7 @@
       <div class="produto-info produto-limpo">
         <span class="eyebrow">Hospedagem</span>
         <h2>Chalés para descansar dentro do Curupy</h2>
+
         <p class="produto-resumo">
           Hospede-se com conforto e aproveite dois dias de parque aquático inclusos.
         </p>
@@ -124,10 +177,12 @@
             <strong>Até 4 pessoas</strong>
             <span>Ideal para família</span>
           </div>
+
           <div>
             <strong>Café da manhã</strong>
             <span>Das 07h30 às 09h30</span>
           </div>
+
           <div>
             <strong>2 dias de parque</strong>
             <span>Entrada e saída</span>
@@ -140,7 +195,7 @@
           <small>Valor para associado. Visitante: R$ 315 por pessoa.</small>
         </div>
 
-        <button class="btn-consulta" onclick="abrirPreConsulta('Hospedagem')">
+        <button class="btn-consulta" type="button" onclick="abrirPreConsulta('Hospedagem')">
           Consultar disponibilidade
         </button>
 
@@ -182,6 +237,7 @@
       <div class="produto-info produto-limpo">
         <span class="eyebrow">Bangalôs</span>
         <h2>Espaço reservado para curtir o dia com conforto</h2>
+
         <p class="produto-resumo">
           Um ambiente privativo para descansar, comemorar e aproveitar o Curupy com mais comodidade.
         </p>
@@ -191,10 +247,12 @@
             <strong>Espaço privativo</strong>
             <span>Uso exclusivo no dia</span>
           </div>
+
           <div>
             <strong>Caixa térmica</strong>
             <span>Inclusa no espaço</span>
           </div>
+
           <div>
             <strong>Das 09h às 17h</strong>
             <span>Período de utilização</span>
@@ -207,7 +265,7 @@
           <small>Valor para sócio. Não sócio: R$ 300 por bangalô.</small>
         </div>
 
-        <button class="btn-consulta" onclick="abrirPreConsulta('Bangalô')">
+        <button class="btn-consulta" type="button" onclick="abrirPreConsulta('Bangalô')">
           Consultar disponibilidade
         </button>
 
@@ -246,6 +304,7 @@
       <div class="produto-info produto-limpo">
         <span class="eyebrow">Quiosques</span>
         <h2>Espaço exclusivo para reunir família e amigos</h2>
+
         <p class="produto-resumo">
           Área reservada para aproveitar o dia no Curupy com mais privacidade e organização.
         </p>
@@ -255,10 +314,12 @@
             <strong>Espaço privado</strong>
             <span>Para família e amigos</span>
           </div>
+
           <div>
             <strong>Caixa térmica</strong>
             <span>Inclusa no espaço</span>
           </div>
+
           <div>
             <strong>Das 09h às 17h</strong>
             <span>Período de utilização</span>
@@ -271,7 +332,7 @@
           <small>Valor para sócio. Não sócio: R$ 600 por quiosque.</small>
         </div>
 
-        <button class="btn-consulta" onclick="abrirPreConsulta('Quiosque')">
+        <button class="btn-consulta" type="button" onclick="abrirPreConsulta('Quiosque')">
           Consultar disponibilidade
         </button>
 
@@ -299,13 +360,14 @@
       </div>
     </div>
   </section>
+
 </main>
 
-<button class="botao-ajuda-flutuante" onclick="abrirAjuda()">❓ Dúvidas</button>
+<button class="botao-ajuda-flutuante" type="button" onclick="abrirAjuda()">? Dúvidas</button>
 
 <div class="modal" id="modalPreConsulta">
   <div class="modal-box modal-leitura">
-    <button class="fechar" onclick="fecharModal('modalPreConsulta')">×</button>
+    <button class="fechar" type="button" onclick="fecharModal('modalPreConsulta')">×</button>
 
     <span class="eyebrow" id="preConsultaTipo">Reserva</span>
     <h2>Antes de continuar</h2>
@@ -321,7 +383,7 @@
       <span>Li e estou ciente das informações principais desta reserva.</span>
     </label>
 
-    <button class="btn-consulta full" id="btnContinuarConsulta" disabled onclick="continuarParaFormulario()">
+    <button class="btn-consulta full" type="button" id="btnContinuarConsulta" disabled onclick="continuarParaFormulario()">
       Continuar para consulta
     </button>
   </div>
@@ -329,7 +391,8 @@
 
 <div class="modal" id="modalConsulta">
   <div class="modal-box">
-    <button class="fechar" onclick="fecharModal('modalConsulta')">×</button>
+    <button class="fechar" type="button" onclick="fecharModal('modalConsulta')">×</button>
+
     <h2>Consulta de disponibilidade</h2>
 
     <p class="modal-aviso">
@@ -357,6 +420,7 @@
         <label>Data desejada
           <input id="dataDesejada" type="date" required>
         </label>
+
         <label>Data alternativa
           <input id="dataAlternativa" type="date">
         </label>
@@ -374,6 +438,7 @@
         <label>Data de nascimento
           <input id="nascimento" type="date">
         </label>
+
         <label>CPF
           <input id="cpf" type="text">
         </label>
@@ -383,6 +448,7 @@
         <label>Telefone / WhatsApp
           <input id="telefone" type="tel" required>
         </label>
+
         <label>E-mail
           <input id="email" type="email">
         </label>
@@ -396,9 +462,11 @@
         <label>Bairro
           <input id="bairro" type="text">
         </label>
+
         <label>Cidade
           <input id="cidade" type="text">
         </label>
+
         <label>CEP
           <input id="cep" type="text">
         </label>
@@ -408,22 +476,27 @@
         <textarea id="observacoes" rows="3"></textarea>
       </label>
 
-      <button class="btn-consulta full" type="submit">Enviar para atendimento</button>
+      <button class="btn-consulta full" type="submit">
+        Enviar para atendimento
+      </button>
     </form>
   </div>
 </div>
 
 <div class="modal" id="modalAjudaReservas">
   <div class="modal-box">
-    <button class="fechar" onclick="fecharModal('modalAjudaReservas')">×</button>
+    <button class="fechar" type="button" onclick="fecharModal('modalAjudaReservas')">×</button>
+
     <h2>Dúvidas e ajuda</h2>
 
     <div class="faq-grupo">
       <h3>Hospedagem</h3>
+
       <details>
         <summary>O que está incluso?</summary>
         <p>Hospedagem, café da manhã e parque aquático no dia da entrada e saída.</p>
       </details>
+
       <details>
         <summary>Criança paga?</summary>
         <p>De 0 a 4 anos não paga mediante documento. A partir de 5 anos paga valor integral.</p>
@@ -432,10 +505,12 @@
 
     <div class="faq-grupo">
       <h3>Bangalôs</h3>
+
       <details>
         <summary>Inclui entrada?</summary>
         <p>Para não associados, a entrada do parque é paga à parte.</p>
       </details>
+
       <details>
         <summary>Posso comemorar aniversário?</summary>
         <p>Sim, com 1 bolo e 100 brigadeiros. Demais alimentos e bebidas não são permitidos.</p>
@@ -444,10 +519,12 @@
 
     <div class="faq-grupo">
       <h3>Quiosques</h3>
+
       <details>
         <summary>Posso levar comida?</summary>
         <p>Sim, somente para consumo no espaço reservado do quiosque.</p>
       </details>
+
       <details>
         <summary>Posso levar bebida?</summary>
         <p>Não. Bebidas devem ser adquiridas dentro do parque.</p>
