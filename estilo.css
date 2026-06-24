@@ -1,13 +1,10 @@
+```css
 :root{
   --azul:#073b66;
   --azul-2:#0f7cc4;
   --verde:#12b886;
   --verde-2:#0ca678;
-  --turquesa:#13d5d0;
-  --amarelo:#ffd447;
-  --rosa:#ff4f8b;
   --texto:#17324d;
-  --claro:#f2fbff;
   --borda:#d9ecf5;
   --sombra:0 18px 45px rgba(7,59,102,.12);
   --sombra-forte:0 28px 70px rgba(7,59,102,.22);
@@ -28,6 +25,22 @@ body{
   color:var(--texto);
   background:linear-gradient(180deg,#fff 0%,#eefaff 45%,#fff 100%);
   overflow-x:hidden;
+}
+
+h1,
+h2,
+h3,
+.hero-tag,
+.eyebrow,
+.btn-principal,
+.btn-consulta,
+.btn-secundario,
+.reservas-menu a,
+.reservas-menu button,
+.resumo-beneficios strong,
+.preco-destaque strong,
+.hero-beneficio span{
+  font-family:'Poppins',Arial,Helvetica,sans-serif;
 }
 
 button,
@@ -64,26 +77,29 @@ img{
   left:0;
   right:0;
   z-index:20;
-  padding:22px 34px;
+  padding:18px 34px;
 }
 
 .reservas-nav{
   width:min(1280px,100%);
+  min-height:76px;
   margin:auto;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:22px;
-  background:rgba(255,255,255,.88);
+  background:rgba(255,255,255,.92);
   backdrop-filter:blur(14px);
   border:1px solid rgba(255,255,255,.8);
   border-radius:999px;
-  padding:10px 16px 10px 22px;
+  padding:8px 26px;
   box-shadow:0 12px 30px rgba(7,59,102,.12);
 }
 
 .reservas-logo img{
-  width:170px;
+  width:135px;
+  max-height:58px;
+  object-fit:contain;
 }
 
 .reservas-menu{
@@ -97,8 +113,9 @@ img{
   border:0;
   background:transparent;
   color:var(--azul);
-  font-weight:900;
-  padding:12px 14px;
+  font-size:.92rem;
+  font-weight:800;
+  padding:11px 14px;
   border-radius:999px;
   transition:.25s;
 }
@@ -113,7 +130,7 @@ img{
 
 .hero-reservas{
   position:relative;
-  min-height:100svh;
+  min-height:92svh;
   overflow:hidden;
   background:#073b66;
 }
@@ -141,73 +158,102 @@ img{
   inset:0;
   background:linear-gradient(
     90deg,
-    rgba(7,59,102,.86) 0%,
-    rgba(7,59,102,.62) 42%,
-    rgba(7,59,102,.15) 100%
+    rgba(7,59,102,.84) 0%,
+    rgba(7,59,102,.58) 44%,
+    rgba(7,59,102,.10) 100%
   );
 }
 
-.hero-conteudo h1{
-  font-size:clamp(2.4rem,4.2vw,4.4rem);
-  line-height:1.08;
-  letter-spacing:-1.8px;
-  max-width:720px;
+.hero-conteudo{
+  position:relative;
+  z-index:2;
+  width:min(1180px,calc(100% - 40px));
+  margin:auto;
+  padding-top:80px;
+  color:#fff;
 }
+
 .hero-tag{
   display:inline-flex;
   background:rgba(255,255,255,.16);
   border:1px solid rgba(255,255,255,.28);
-  padding:10px 16px;
+  padding:9px 15px;
   border-radius:999px;
-  font-weight:900;
+  font-size:.85rem;
+  font-weight:800;
   margin-bottom:18px;
   backdrop-filter:blur(10px);
 }
 
 .hero-conteudo h1{
-  font-size:clamp(3.2rem,7vw,7rem);
-  line-height:.95;
-  letter-spacing:-4px;
-  max-width:760px;
-  margin-bottom:22px;
+  font-size:clamp(2.6rem,4.6vw,4.8rem);
+  line-height:1.05;
+  letter-spacing:-2px;
+  max-width:640px;
+  margin-bottom:18px;
   font-weight:900;
 }
 
 .hero-conteudo p{
-  font-size:clamp(1.05rem,2vw,1.35rem);
-  line-height:1.5;
-  max-width:620px;
-  color:rgba(255,255,255,.9);
+  font-size:clamp(1rem,1.45vw,1.18rem);
+  line-height:1.45;
+  max-width:540px;
+  color:rgba(255,255,255,.92);
 }
 
-.hero-beneficios{
+/* CARD DE BENEFÍCIOS DO HERO */
+
+.hero-beneficios-card{
+  margin-top:22px;
+  margin-bottom:28px;
+  width:100%;
+  max-width:510px;
+  background:rgba(255,255,255,.11);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 18px 42px rgba(0,0,0,.18);
+}
+
+.hero-beneficio{
   display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin:28px 0 34px;
+  align-items:center;
+  gap:14px;
+  padding:15px 20px;
+  color:#fff;
 }
 
-.hero-beneficios span{
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(10px);
-  color:var(--azul);
-  font-weight:900;
-  padding:12px 15px;
-  border-radius:999px;
-  box-shadow:0 10px 22px rgba(0,0,0,.14);
+.hero-beneficio + .hero-beneficio{
+  border-top:1px solid rgba(255,255,255,.13);
 }
+
+.hero-beneficio i{
+  width:24px;
+  font-size:18px;
+  color:#8ff3d0;
+  text-align:center;
+}
+
+.hero-beneficio span{
+  font-size:.95rem;
+  font-weight:700;
+}
+
+/* BOTÕES */
 
 .btn-principal,
 .btn-consulta,
 .btn-secundario{
   border:0;
   border-radius:999px;
-  min-height:56px;
-  padding:0 28px;
+  min-height:58px;
+  padding:0 30px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  font-weight:900;
+  font-size:1rem;
+  font-weight:800;
   transition:.25s ease;
 }
 
@@ -232,18 +278,19 @@ img{
 
 .btn-consulta{
   margin-top:24px;
-  min-height:64px;
-  font-size:1.05rem;
+  min-height:62px;
 }
 
 .full{
   width:100%;
 }
 
+/* CONTROLES HERO */
+
 .hero-controles{
   position:absolute;
   left:50%;
-  bottom:32px;
+  bottom:28px;
   transform:translateX(-50%);
   z-index:5;
   display:flex;
@@ -255,8 +302,8 @@ img{
 }
 
 .hero-controles button{
-  width:44px;
-  height:12px;
+  width:42px;
+  height:11px;
   border:0;
   border-radius:999px;
   background:rgba(255,255,255,.48);
@@ -264,13 +311,13 @@ img{
 
 .hero-controles button.ativo{
   background:#fff;
-  width:64px;
+  width:62px;
 }
 
 /* INTRO */
 
 .intro-reservas{
-  padding:70px 0 34px;
+  padding:64px 0 28px;
 }
 
 .intro-grid{
@@ -281,8 +328,8 @@ img{
 }
 
 .eyebrow{
-  color:var(--rosa);
-  font-weight:900;
+  color:#ff4f8b;
+  font-weight:800;
   text-transform:uppercase;
   letter-spacing:.12em;
   font-size:.78rem;
@@ -291,17 +338,16 @@ img{
 }
 
 .intro-grid h2,
-.produto-info h2,
-.ajuda-card h2{
-  font-size:clamp(2rem,4.8vw,4rem);
-  line-height:1;
+.produto-info h2{
+  font-size:clamp(2rem,4.1vw,3.4rem);
+  line-height:1.06;
   color:var(--azul);
-  letter-spacing:-2px;
+  letter-spacing:-1.5px;
+  font-weight:900;
 }
 
 .intro-grid p,
-.produto-info p,
-.ajuda-card p{
+.produto-info p{
   font-size:1.05rem;
   line-height:1.6;
   color:#36566f;
@@ -310,7 +356,7 @@ img{
 /* PRODUTOS */
 
 .produto-section{
-  padding:70px 0;
+  padding:62px 0;
   scroll-margin-top:20px;
 }
 
@@ -330,182 +376,117 @@ img{
 }
 
 .produto-imagem{
-  position:sticky;
-  top:24px;
-  border-radius:36px;
+  position:relative;
+  top:0;
+  border-radius:34px;
   overflow:hidden;
   box-shadow:var(--sombra-forte);
-  min-height:650px;
+  height:520px;
   background:#dff8ff;
 }
 
 .produto-imagem img{
   width:100%;
   height:100%;
-  min-height:650px;
   object-fit:cover;
 }
 
 .produto-info{
-  background:rgba(255,255,255,.82);
+  background:rgba(255,255,255,.88);
   border:1px solid rgba(217,236,245,.8);
   box-shadow:var(--sombra);
   border-radius:34px;
-  padding:34px;
+  padding:32px;
+}
+
+.produto-limpo{
+  max-width:680px;
 }
 
 .produto-info h2{
   margin-bottom:16px;
 }
 
-.produto-info h3{
-  color:var(--azul);
-  font-size:1.25rem;
-  margin:26px 0 12px;
+.produto-resumo{
+  font-size:1.12rem;
+  margin-bottom:24px;
 }
 
-.beneficios-grid{
+.resumo-beneficios{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:12px;
   margin:26px 0;
 }
 
-.beneficios-grid div{
+.resumo-beneficios div{
   background:#eefaff;
   border:1px solid var(--borda);
   border-radius:18px;
-  padding:16px;
+  padding:18px;
 }
 
-.beneficios-grid strong{
+.resumo-beneficios strong{
   display:block;
   color:var(--azul);
-  font-size:.9rem;
-  margin-bottom:4px;
-}
-
-.beneficios-grid span{
-  font-weight:900;
-}
-
-.lista-check{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  list-style:none;
-}
-
-.lista-check li{
-  background:#fff;
-  border:1px solid var(--borda);
-  border-radius:16px;
-  padding:12px 14px;
+  font-size:.98rem;
+  margin-bottom:6px;
   font-weight:800;
 }
 
-.lista-check li::before{
-  content:'✓';
-  color:var(--verde);
-  font-weight:900;
-  margin-right:8px;
+.resumo-beneficios span{
+  color:#36566f;
+  font-size:.92rem;
 }
 
-.destaque-lista li{
-  background:#f1fff9;
-  border-color:#c7f5e5;
-}
-
-/* VALORES */
-
-.valores-card{
-  margin-top:26px;
+.preco-destaque{
   background:linear-gradient(135deg,#0b5c97,#073b66);
   color:#fff;
-  border-radius:26px;
-  padding:22px;
+  border-radius:24px;
+  padding:24px;
+  margin:24px 0;
   box-shadow:0 18px 38px rgba(7,59,102,.2);
 }
 
-.valores-card h3{
-  color:#fff;
-  margin-top:0;
+.preco-destaque span,
+.preco-destaque small{
+  display:block;
+  color:rgba(255,255,255,.84);
 }
 
-.valores-linha{
-  display:flex;
-  justify-content:space-between;
-  gap:18px;
-  padding:14px 0;
-  border-top:1px solid rgba(255,255,255,.16);
+.preco-destaque strong{
+  display:block;
+  font-size:2rem;
+  margin:6px 0;
   font-weight:900;
 }
 
-.valores-linha.associado strong{
-  color:#8ff3d0;
+.detalhes-reserva{
+  margin-top:22px;
+  display:grid;
+  gap:10px;
 }
 
-.valores-card p{
-  color:rgba(255,255,255,.82);
-  font-size:.95rem;
-  margin-top:12px;
-}
-
-/* REGRAS */
-
-.regras-box{
-  margin-top:16px;
-  background:#fff;
+.detalhes-reserva details{
   border:1px solid var(--borda);
-  border-radius:20px;
-  padding:0;
+  border-radius:16px;
+  background:#fff;
   overflow:hidden;
 }
 
-.regras-box summary{
-  padding:18px 20px;
-  font-weight:900;
-  color:var(--azul);
+.detalhes-reserva summary{
   cursor:pointer;
+  padding:16px 18px;
+  font-family:'Poppins',Arial,Helvetica,sans-serif;
+  font-weight:800;
+  color:var(--azul);
   background:#f8fcff;
 }
 
-.regras-box ul{
+.detalhes-reserva ul{
   padding:0 22px 18px 40px;
   line-height:1.65;
   color:#36566f;
-}
-
-/* AJUDA */
-
-.ajuda-section{
-  padding:50px 0 80px;
-}
-
-.ajuda-card{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:28px;
-  align-items:center;
-  background:linear-gradient(135deg,#eaffff,#fff);
-  border:1px solid var(--borda);
-  box-shadow:var(--sombra);
-  border-radius:34px;
-  padding:34px;
-}
-
-.botao-ajuda-flutuante{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  z-index:100;
-  border:0;
-  border-radius:999px;
-  background:var(--azul);
-  color:#fff;
-  font-weight:900;
-  padding:15px 20px;
-  box-shadow:0 16px 38px rgba(0,0,0,.22);
 }
 
 /* MODAL */
@@ -547,6 +528,10 @@ img{
   transform:scale(1);
 }
 
+.modal-leitura{
+  width:min(760px,100%);
+}
+
 .fechar{
   position:absolute;
   top:14px;
@@ -561,10 +546,12 @@ img{
 }
 
 .modal-box h2{
+  font-family:'Poppins',Arial,Helvetica,sans-serif;
   color:var(--azul);
   font-size:2rem;
   margin-bottom:10px;
   padding-right:42px;
+  font-weight:900;
 }
 
 .modal-aviso{
@@ -575,6 +562,45 @@ img{
   padding:14px 16px;
   line-height:1.45;
   margin-bottom:18px;
+}
+
+.pre-consulta-lista{
+  display:grid;
+  gap:10px;
+  margin:18px 0;
+}
+
+.pre-consulta-item{
+  background:#eefaff;
+  border:1px solid var(--borda);
+  border-radius:16px;
+  padding:14px 16px;
+  color:var(--azul);
+  font-weight:700;
+  line-height:1.45;
+}
+
+.check-ciencia{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  background:#f1fff9;
+  border:1px solid #c7f5e5;
+  border-radius:16px;
+  padding:14px;
+  margin-top:18px;
+}
+
+.check-ciencia input{
+  width:auto;
+  min-height:auto;
+  margin-top:4px;
+}
+
+#btnContinuarConsulta:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+  transform:none;
 }
 
 form{
@@ -641,7 +667,8 @@ textarea{
 .faq-grupo summary{
   padding:14px 16px;
   cursor:pointer;
-  font-weight:900;
+  font-family:'Poppins',Arial,Helvetica,sans-serif;
+  font-weight:800;
   color:var(--azul);
 }
 
@@ -649,6 +676,23 @@ textarea{
   padding:0 16px 16px;
   color:#36566f;
   line-height:1.55;
+}
+
+/* AJUDA */
+
+.botao-ajuda-flutuante{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:100;
+  border:0;
+  border-radius:999px;
+  background:var(--azul);
+  color:#fff;
+  font-family:'Poppins',Arial,Helvetica,sans-serif;
+  font-weight:800;
+  padding:15px 20px;
+  box-shadow:0 16px 38px rgba(0,0,0,.22);
 }
 
 /* FOOTER */
@@ -679,12 +723,13 @@ textarea{
   }
 
   .reservas-nav{
+    min-height:68px;
     border-radius:26px;
-    align-items:center;
+    padding:8px 14px;
   }
 
   .reservas-logo img{
-    width:130px;
+    width:120px;
   }
 
   .reservas-menu a{
@@ -693,6 +738,12 @@ textarea{
 
   .reservas-menu button{
     background:#eefaff;
+    font-size:.82rem;
+    padding:10px 12px;
+  }
+
+  .hero-reservas{
+    min-height:88svh;
   }
 
   .hero-conteudo{
@@ -700,17 +751,31 @@ textarea{
   }
 
   .hero-conteudo h1{
-    letter-spacing:-2px;
+    font-size:clamp(2.35rem,10vw,3.6rem);
+    line-height:1.08;
+    letter-spacing:-1.4px;
   }
 
-  .hero-beneficios span{
+  .hero-conteudo p{
+    font-size:1rem;
+  }
+
+  .hero-beneficios-card{
+    max-width:100%;
+    border-radius:20px;
+  }
+
+  .hero-beneficio{
+    padding:14px 16px;
+  }
+
+  .hero-beneficio span{
     font-size:.9rem;
   }
 
   .intro-grid,
   .produto-grid,
-  .produto-grid.invertido,
-  .ajuda-card{
+  .produto-grid.invertido{
     grid-template-columns:1fr;
   }
 
@@ -719,14 +784,8 @@ textarea{
   }
 
   .produto-imagem{
-    position:relative;
-    top:0;
-    min-height:320px;
-    border-radius:28px;
-  }
-
-  .produto-imagem img{
-    min-height:320px;
+    height:280px;
+    border-radius:26px;
   }
 
   .produto-info{
@@ -734,19 +793,14 @@ textarea{
     border-radius:28px;
   }
 
-  .lista-check,
-  .beneficios-grid,
+  .resumo-beneficios,
   .form-duplo,
   .form-triplo{
     grid-template-columns:1fr;
   }
 
-  .valores-linha{
-    display:grid;
-  }
-
-  .ajuda-card .btn-secundario{
-    width:100%;
+  .preco-destaque strong{
+    font-size:1.6rem;
   }
 
   .botao-ajuda-flutuante{
@@ -761,8 +815,9 @@ textarea{
   .hero-overlay{
     background:linear-gradient(
       180deg,
-      rgba(7,59,102,.72),
-      rgba(7,59,102,.84)
+      rgba(7,59,102,.70),
+      rgba(7,59,102,.86)
     );
   }
 }
+```
