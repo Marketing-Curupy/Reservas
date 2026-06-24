@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Reservas Curupy | Hospedagem, Bangalôs e Quiosques</title>
+  <meta name="description" content="Consulte disponibilidade para hospedagem, bangalôs e quiosques no Curupy Acqua Park." />
+
+  <link rel="stylesheet" href="reservas.css" />
+</head>
+<body>
+
+<header class="reservas-topo">
+  <nav class="reservas-nav">
+    <a class="reservas-logo" href="index.html">
+      <img src="logo-curupy.png" alt="Curupy Acqua Park">
+    </a>
+
+    <div class="reservas-menu">
+      <a href="#hospedagem">Hospedagem</a>
+      <a href="#bangalos">Bangalôs</a>
+      <a href="#quiosques">Quiosques</a>
+      <button onclick="abrirAjuda()">Dúvidas</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero-reservas">
+    <div class="hero-slide ativo" style="--foto:url('assets/reservas/hospedagem.jpg')">
+      <div class="hero-overlay"></div>
+      <div class="hero-conteudo">
+        <span class="hero-tag">Hospedagem Curupy</span>
+        <h1>Hospede-se dentro do Curupy</h1>
+        <p>Aproveite chalés completos, café da manhã e parque aquático incluso no dia da entrada e da saída.</p>
+        <div class="hero-beneficios">
+          <span>🏡 Até 4 pessoas</span>
+          <span>☕ Café da manhã</span>
+          <span>💦 2 dias de parque</span>
+        </div>
+        <a class="btn-principal" href="#hospedagem">Saiba mais</a>
+      </div>
+    </div>
+
+    <div class="hero-slide" style="--foto:url('assets/reservas/bangalos.jpg')">
+      <div class="hero-overlay"></div>
+      <div class="hero-conteudo">
+        <span class="hero-tag">Bangalôs</span>
+        <h1>Seu espaço reservado para relaxar</h1>
+        <p>Ambiente privativo para aproveitar o dia com conforto, rede para descanso e caixa térmica inclusa.</p>
+        <div class="hero-beneficios">
+          <span>🌴 Espaço privativo</span>
+          <span>🧊 Caixa térmica</span>
+          <span>🪢 Rede inclusa</span>
+        </div>
+        <a class="btn-principal" href="#bangalos">Saiba mais</a>
+      </div>
+    </div>
+
+    <div class="hero-slide" style="--foto:url('assets/reservas/quiosques.jpg')">
+      <div class="hero-overlay"></div>
+      <div class="hero-conteudo">
+        <span class="hero-tag">Quiosques</span>
+        <h1>Reúna quem você gosta em um espaço exclusivo</h1>
+        <p>Reserve um quiosque para curtir o dia com família e amigos em uma área privativa dentro do Curupy.</p>
+        <div class="hero-beneficios">
+          <span>🍖 Espaço exclusivo</span>
+          <span>🧊 Caixa térmica</span>
+          <span>⏰ 09h às 17h</span>
+        </div>
+        <a class="btn-principal" href="#quiosques">Saiba mais</a>
+      </div>
+    </div>
+
+    <div class="hero-controles">
+      <button class="ativo" onclick="mostrarSlide(0)"></button>
+      <button onclick="mostrarSlide(1)"></button>
+      <button onclick="mostrarSlide(2)"></button>
+    </div>
+  </section>
+
+  <section id="hospedagem" class="produto-section">
+    <div class="container produto-grid">
+      <div class="produto-imagem">
+        <img src="assets/reservas/hospedagem.jpg" alt="Chalé Curupy">
+      </div>
+
+      <div class="produto-info">
+        <span class="eyebrow">Hospedagem</span>
+        <h2>Chalés para descansar e aproveitar dois dias de parque</h2>
+        <p>Hospedagem para momentos de tranquilidade e diversão com sua família e amigos.</p>
+
+        <div class="beneficios-grid">
+          <div><strong>Capacidade</strong><span>Até 4 pessoas</span></div>
+          <div><strong>Camas</strong><span>1 casal + 2 solteiro</span></div>
+          <div><strong>Check-in</strong><span>A partir das 14h</span></div>
+          <div><strong>Check-out</strong><span>Até 11h</span></div>
+        </div>
+
+        <h3>O chalé possui</h3>
+        <ul class="lista-check">
+          <li>Ar-condicionado</li>
+          <li>Cofre</li>
+          <li>Internet</li>
+          <li>TV</li>
+          <li>Frigobar</li>
+          <li>Micro-ondas</li>
+        </ul>
+
+        <h3>Incluso na hospedagem</h3>
+        <ul class="lista-check destaque-lista">
+          <li>Hospedagem</li>
+          <li>Café da manhã das 07h30 às 09h30</li>
+          <li>Parque aquático no dia da entrada</li>
+          <li>Parque aquático no dia da saída</li>
+        </ul>
+
+        <div class="valores-card">
+          <h3>Valores</h3>
+          <div class="valores-linha"><span>Visitante</span><strong>R$ 315 por pessoa</strong></div>
+          <div class="valores-linha associado"><span>Associado</span><strong>R$ 236 por pessoa</strong></div>
+          <p>Crianças de 0 a 4 anos não pagam mediante documento. A partir de 5 anos é cobrado valor integral.</p>
+        </div>
+
+        <details class="regras-box" open>
+          <summary>Informações importantes</summary>
+          <ul>
+            <li>Reserva mediante disponibilidade.</li>
+            <li>Confirmação com 50% do valor antecipado.</li>
+            <li>Pagamento por cartão de débito ou transferência bancária.</li>
+            <li>Link de crédito pode ser enviado, porém com cobrança do valor total da reserva.</li>
+          </ul>
+        </details>
+
+        <button class="btn-consulta" onclick="abrirConsulta('Hospedagem')">Consultar disponibilidade</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="bangalos" class="produto-section">
+    <div class="container produto-grid invertido">
+      <div class="produto-imagem">
+        <img src="assets/reservas/bangalos.jpg" alt="Bangalô Curupy">
+      </div>
+
+      <div class="produto-info">
+        <span class="eyebrow">Bangalôs</span>
+        <h2>Espaço privativo para curtir o dia com conforto</h2>
+        <p>Utilização exclusiva das 09h às 17h.</p>
+
+        <ul class="lista-check destaque-lista">
+          <li>Espaço privativo</li>
+          <li>Caixa térmica</li>
+          <li>Rede para descanso</li>
+          <li>Utilização das 09h às 17h</li>
+        </ul>
+
+        <div class="valores-card">
+          <h3>Valores</h3>
+          <div class="valores-linha"><span>Não sócio</span><strong>R$ 300 por bangalô</strong></div>
+          <div class="valores-linha associado"><span>Sócio</span><strong>R$ 250 por bangalô</strong></div>
+        </div>
+
+        <details class="regras-box" open>
+          <summary>Regras importantes</summary>
+          <ul>
+            <li>Reserva com antecedência e 50% antecipado.</li>
+            <li>Entradas do parque não inclusas para não associados.</li>
+            <li>Para aniversário: permitido 1 bolo e 100 brigadeiros.</li>
+            <li>Demais alimentos e bebidas não são permitidos.</li>
+            <li>Utensílios devem ser trazidos pelo visitante.</li>
+          </ul>
+        </details>
+
+        <button class="btn-consulta" onclick="abrirConsulta('Bangalô')">Consultar disponibilidade</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiosques" class="produto-section">
+    <div class="container produto-grid">
+      <div class="produto-imagem">
+        <img src="assets/reservas/quiosques.jpg" alt="Quiosque Curupy">
+      </div>
+
+      <div class="produto-info">
+        <span class="eyebrow">Quiosques</span>
+        <h2>Espaço exclusivo para reunir família e amigos</h2>
+        <p>Área privativa para utilizar durante o dia, com prioridade e valor diferenciado para sócios.</p>
+
+        <ul class="lista-check destaque-lista">
+          <li>Espaço privado</li>
+          <li>Caixa térmica</li>
+          <li>Utilização das 09h às 17h</li>
+        </ul>
+
+        <div class="valores-card">
+          <h3>Valores</h3>
+          <div class="valores-linha"><span>Não sócio</span><strong>R$ 600 por quiosque</strong></div>
+          <div class="valores-linha associado"><span>Sócio</span><strong>R$ 300 por quiosque</strong></div>
+        </div>
+
+        <details class="regras-box" open>
+          <summary>Regras importantes</summary>
+          <ul>
+            <li>Reserva com antecedência e 50% antecipado.</li>
+            <li>Entradas do parque são pagas à parte para não associados.</li>
+            <li>Alimentos permitidos somente para consumo no quiosque.</li>
+            <li>Bebidas não são permitidas e devem ser adquiridas no parque.</li>
+            <li>Utensílios devem ser trazidos pelo visitante.</li>
+          </ul>
+        </details>
+
+        <button class="btn-consulta" onclick="abrirConsulta('Quiosque')">Consultar disponibilidade</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<button class="botao-ajuda-flutuante" onclick="abrirAjuda()">❓ Dúvidas</button>
+
+<div class="modal" id="modalConsulta">
+  <div class="modal-box">
+    <button class="fechar" onclick="fecharModal('modalConsulta')">×</button>
+    <h2>Consulta de disponibilidade</h2>
+
+    <p class="modal-aviso">
+      O envio desta solicitação não garante a reserva. Nossa equipe verificará a disponibilidade da data desejada e dará continuidade pelo WhatsApp.
+    </p>
+
+    <form onsubmit="enviarConsultaWhatsApp(event)">
+      <label>Tipo da solicitação
+        <select id="tipoReserva" required>
+          <option value="Hospedagem">Hospedagem</option>
+          <option value="Bangalô">Bangalô</option>
+          <option value="Quiosque">Quiosque</option>
+        </select>
+      </label>
+
+      <label>Você é associado?
+        <select id="associado" required>
+          <option value="">Selecione</option>
+          <option value="Sim">Sim, sou associado</option>
+          <option value="Não">Não sou associado</option>
+        </select>
+      </label>
+
+      <div class="form-duplo">
+        <label>Data desejada
+          <input id="dataDesejada" type="date" required>
+        </label>
+        <label>Data alternativa
+          <input id="dataAlternativa" type="date">
+        </label>
+      </div>
+
+      <label>Quantidade de pessoas
+        <input id="quantidadePessoas" type="number" min="1" required>
+      </label>
+
+      <label>Nome completo
+        <input id="nomeCompleto" type="text" required>
+      </label>
+
+      <div class="form-duplo">
+        <label>Data de nascimento
+          <input id="nascimento" type="date">
+        </label>
+        <label>CPF
+          <input id="cpf" type="text">
+        </label>
+      </div>
+
+      <div class="form-duplo">
+        <label>Telefone / WhatsApp
+          <input id="telefone" type="tel" required>
+        </label>
+        <label>E-mail
+          <input id="email" type="email">
+        </label>
+      </div>
+
+      <label>Endereço e número
+        <input id="endereco" type="text">
+      </label>
+
+      <div class="form-triplo">
+        <label>Bairro
+          <input id="bairro" type="text">
+        </label>
+        <label>Cidade
+          <input id="cidade" type="text">
+        </label>
+        <label>CEP
+          <input id="cep" type="text">
+        </label>
+      </div>
+
+      <label>Observações
+        <textarea id="observacoes" rows="3"></textarea>
+      </label>
+
+      <button class="btn-consulta full" type="submit">Enviar para atendimento</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="modalAjudaReservas">
+  <div class="modal-box">
+    <button class="fechar" onclick="fecharModal('modalAjudaReservas')">×</button>
+    <h2>Dúvidas e ajuda</h2>
+
+    <div class="faq-grupo">
+      <h3>Hospedagem</h3>
+      <details><summary>O que está incluso?</summary><p>Hospedagem, café da manhã e parque aquático no dia da entrada e saída.</p></details>
+      <details><summary>Criança paga?</summary><p>De 0 a 4 anos não paga mediante documento. A partir de 5 anos paga valor integral.</p></details>
+    </div>
+
+    <div class="faq-grupo">
+      <h3>Bangalôs</h3>
+      <details><summary>Inclui entrada?</summary><p>Para não associados, a entrada do parque é paga à parte.</p></details>
+      <details><summary>Posso comemorar aniversário?</summary><p>Sim, com 1 bolo e 100 brigadeiros. Demais alimentos e bebidas não são permitidos.</p></details>
+    </div>
+
+    <div class="faq-grupo">
+      <h3>Quiosques</h3>
+      <details><summary>Posso levar comida?</summary><p>Sim, somente para consumo no espaço reservado do quiosque.</p></details>
+      <details><summary>Posso levar bebida?</summary><p>Não. Bebidas devem ser adquiridas dentro do parque.</p></details>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-reservas">
+  <img src="logo-curupy.png" alt="Curupy Acqua Park">
+  <p>Reservas de hospedagem, bangalôs e quiosques.</p>
+  <strong>Atendimento: (66) 99656-2410</strong>
+</footer>
+
+<script src="reservas.js"></script>
+</body>
+</html>
