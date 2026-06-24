@@ -1,185 +1,820 @@
-```js id="nrf628"
-let slideAtual = 0;
-let tipoConsultaAtual = "";
-let intervaloCarrossel = null;
-
-const informacoesPreConsulta = {
-  Hospedagem: [
-    "A reserva depende de disponibilidade da data desejada.",
-    "A hospedagem inclui café da manhã e acesso ao parque aquático no dia da entrada e no dia da saída.",
-    "Check-in a partir das 14h e check-out até 11h.",
-    "Crianças de 0 a 4 anos não pagam mediante apresentação de documento. A partir de 5 anos é cobrado valor integral.",
-    "A confirmação da reserva exige 50% do valor antecipado."
-  ],
-
-  Bangalô: [
-    "A reserva depende de disponibilidade da data desejada.",
-    "O bangalô é utilizado das 09h às 17h.",
-    "A entrada do parque não está inclusa para não associados.",
-    "Para aniversário, é permitido 1 bolo e 100 brigadeiros.",
-    "Demais alimentos e bebidas não são permitidos. Utensílios devem ser trazidos pelo visitante.",
-    "A confirmação da reserva exige 50% do valor antecipado."
-  ],
-
-  Quiosque: [
-    "A reserva depende de disponibilidade da data desejada.",
-    "O quiosque é utilizado das 09h às 17h.",
-    "A entrada do parque é paga à parte para não associados.",
-    "Alimentos são permitidos somente para consumo no espaço reservado do quiosque.",
-    "Bebidas não são permitidas e devem ser adquiridas dentro do parque.",
-    "A confirmação da reserva exige 50% do valor antecipado."
-  ]
-};
-
-function mostrarSlide(index) {
-  const slides = document.querySelectorAll(".hero-slide");
-  const botoes = document.querySelectorAll(".hero-controles button");
-
-  if (!slides.length) return;
-
-  slideAtual = index;
-
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("ativo", i === index);
-  });
-
-  botoes.forEach((botao, i) => {
-    botao.classList.toggle("ativo", i === index);
-  });
+:root{
+  --azul:#073b66;
+  --azul-2:#0f7cc4;
+  --verde:#12b886;
+  --verde-2:#0ca678;
+  --turquesa:#13d5d0;
+  --amarelo:#ffd447;
+  --rosa:#ff4f8b;
+  --texto:#17324d;
+  --claro:#f2fbff;
+  --borda:#d9ecf5;
+  --sombra:0 18px 45px rgba(7,59,102,.12);
+  --sombra-forte:0 28px 70px rgba(7,59,102,.22);
 }
 
-function proximoSlide() {
-  const total = document.querySelectorAll(".hero-slide").length;
-  if (!total) return;
-
-  mostrarSlide((slideAtual + 1) % total);
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-function iniciarCarrossel() {
-  const total = document.querySelectorAll(".hero-slide").length;
-  if (total <= 1) return;
-
-  intervaloCarrossel = setInterval(proximoSlide, 5000);
+html{
+  scroll-behavior:smooth;
 }
 
-function abrirModal(id) {
-  const modal = document.getElementById(id);
-  if (!modal) return;
-
-  modal.classList.add("open");
-  document.body.style.overflow = "hidden";
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--texto);
+  background:linear-gradient(180deg,#fff 0%,#eefaff 45%,#fff 100%);
+  overflow-x:hidden;
 }
 
-function fecharModal(id) {
-  const modal = document.getElementById(id);
-  if (!modal) return;
-
-  modal.classList.remove("open");
-
-  const algumModalAberto = document.querySelector(".modal.open");
-  if (!algumModalAberto) {
-    document.body.style.overflow = "";
-  }
+h1,
+h2,
+h3,
+.hero-tag,
+.eyebrow,
+.btn-principal,
+.btn-consulta,
+.btn-secundario,
+.reservas-menu a,
+.reservas-menu button,
+.resumo-beneficios strong,
+.preco-destaque strong{
+  font-family:'Poppins',Arial,Helvetica,sans-serif;
 }
 
-function abrirAjuda() {
-  abrirModal("modalAjudaReservas");
+button,
+input,
+select,
+textarea{
+  font-family:inherit;
 }
 
-function abrirPreConsulta(tipo) {
-  tipoConsultaAtual = tipo;
-
-  const tituloTipo = document.getElementById("preConsultaTipo");
-  const conteudo = document.getElementById("preConsultaConteudo");
-  const check = document.getElementById("checkCienciaReserva");
-  const botao = document.getElementById("btnContinuarConsulta");
-
-  if (tituloTipo) tituloTipo.textContent = tipo;
-
-  if (conteudo) {
-    const informacoes = informacoesPreConsulta[tipo] || [];
-
-    conteudo.innerHTML = informacoes
-      .map((item) => `<div class="pre-consulta-item">✓ ${item}</div>`)
-      .join("");
-  }
-
-  if (check) check.checked = false;
-  if (botao) botao.disabled = true;
-
-  abrirModal("modalPreConsulta");
+button{
+  cursor:pointer;
 }
 
-function liberarBotaoConsulta() {
-  const check = document.getElementById("checkCienciaReserva");
-  const botao = document.getElementById("btnContinuarConsulta");
-
-  if (check && botao) {
-    botao.disabled = !check.checked;
-  }
+a{
+  text-decoration:none;
+  color:inherit;
 }
 
-function continuarParaFormulario() {
-  const check = document.getElementById("checkCienciaReserva");
-
-  if (!check || !check.checked) return;
-
-  fecharModal("modalPreConsulta");
-  abrirConsulta(tipoConsultaAtual);
+img{
+  max-width:100%;
+  display:block;
 }
 
-function abrirConsulta(tipo) {
-  const campoTipo = document.getElementById("tipoReserva");
-  if (campoTipo) campoTipo.value = tipo;
-
-  abrirModal("modalConsulta");
+.container{
+  width:min(1180px,calc(100% - 40px));
+  margin:auto;
 }
 
-function valorCampo(id) {
-  const campo = document.getElementById(id);
-  return campo ? campo.value.trim() : "";
+/* TOPO */
+
+.reservas-topo{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  z-index:20;
+  padding:18px 34px;
 }
 
-function enviarConsultaWhatsApp(event) {
-  event.preventDefault();
+.reservas-nav{
+  width:min(1280px,100%);
+  min-height:76px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:22px;
+  background:rgba(255,255,255,.90);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:999px;
+  padding:8px 26px;
+  box-shadow:0 12px 30px rgba(7,59,102,.12);
+}
 
-  const numeroWhatsApp = "5566996562410";
+.reservas-logo img{
+  width:135px;
+  max-height:58px;
+  object-fit:contain;
+}
 
-  const mensagem =
-    `Olá! Quero consultar disponibilidade no Curupy.\n\n` +
-    `Tipo da solicitação: ${valorCampo("tipoReserva")}\n` +
-    `Associado: ${valorCampo("associado")}\n` +
-    `Data desejada: ${valorCampo("dataDesejada")}\n` +
-    `Data alternativa: ${valorCampo("dataAlternativa") || "Não informada"}\n` +
-    `Quantidade de pessoas: ${valorCampo("quantidadePessoas")}\n\n` +
-    `Nome completo: ${valorCampo("nomeCompleto")}\n` +
-    `Data de nascimento: ${valorCampo("nascimento") || "Não informada"}\n` +
-    `CPF: ${valorCampo("cpf") || "Não informado"}\n` +
-    `Telefone: ${valorCampo("telefone")}\n` +
-    `E-mail: ${valorCampo("email") || "Não informado"}\n\n` +
-    `Endereço: ${valorCampo("endereco") || "Não informado"}\n` +
-    `Bairro: ${valorCampo("bairro") || "Não informado"}\n` +
-    `Cidade: ${valorCampo("cidade") || "Não informada"}\n` +
-    `CEP: ${valorCampo("cep") || "Não informado"}\n\n` +
-    `Observações: ${valorCampo("observacoes") || "Nenhuma"}\n\n` +
-    `Declaração: li e estou ciente das informações principais da reserva.\n` +
-    `Estou ciente de que o envio desta solicitação não garante a reserva e que a equipe irá verificar a disponibilidade.`;
+.reservas-menu{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
 
-  window.open(
-    `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`,
-    "_blank"
+.reservas-menu a,
+.reservas-menu button{
+  border:0;
+  background:transparent;
+  color:var(--azul);
+  font-size:.92rem;
+  font-weight:800;
+  padding:11px 14px;
+  border-radius:999px;
+  transition:.25s;
+}
+
+.reservas-menu a:hover,
+.reservas-menu button:hover{
+  background:#eefaff;
+  color:var(--azul-2);
+}
+
+/* HERO */
+
+.hero-reservas{
+  position:relative;
+  min-height:92svh;
+  overflow:hidden;
+  background:#073b66;
+}
+
+.hero-slide{
+  position:absolute;
+  inset:0;
+  background-image:var(--foto);
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transform:scale(1.04);
+  transition:opacity .8s ease, transform 1.2s ease;
+  display:flex;
+  align-items:center;
+}
+
+.hero-slide.ativo{
+  opacity:1;
+  transform:scale(1);
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    rgba(7,59,102,.82) 0%,
+    rgba(7,59,102,.58) 42%,
+    rgba(7,59,102,.10) 100%
   );
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  iniciarCarrossel();
+.hero-conteudo{
+  position:relative;
+  z-index:2;
+  width:min(1180px,calc(100% - 40px));
+  margin:auto;
+  padding-top:80px;
+  color:#fff;
+}
 
-  document.querySelectorAll(".modal").forEach((modal) => {
-    modal.addEventListener("click", (event) => {
-      if (event.target === modal) {
-        fecharModal(modal.id);
-      }
-    });
-  });
-});
-```
+.hero-tag{
+  display:inline-flex;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.28);
+  padding:9px 15px;
+  border-radius:999px;
+  font-size:.85rem;
+  font-weight:800;
+  margin-bottom:18px;
+  backdrop-filter:blur(10px);
+}
+
+.hero-conteudo h1{
+  font-size:clamp(2.8rem,5vw,5.3rem);
+  line-height:1.08;
+  letter-spacing:-2.5px;
+  max-width:690px;
+  margin-bottom:22px;
+  font-weight:900;
+}
+
+.hero-conteudo p{
+  font-size:clamp(1rem,1.55vw,1.25rem);
+  line-height:1.45;
+  max-width:560px;
+  color:rgba(255,255,255,.92);
+}
+
+.hero-beneficios{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:0;
+  width:max-content;
+  max-width:100%;
+  padding:14px 18px;
+  margin:28px 0 32px;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:22px;
+  background:rgba(7,59,102,.34);
+  backdrop-filter:blur(12px);
+  box-shadow:0 18px 42px rgba(0,0,0,.18);
+}
+
+.hero-beneficios span{
+  background:transparent;
+  color:#fff;
+  box-shadow:none;
+  border-radius:0;
+  padding:4px 22px;
+  font-size:.98rem;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.hero-beneficios span + span{
+  border-left:1px solid rgba(255,255,255,.35);
+}
+
+.btn-principal,
+.btn-consulta,
+.btn-secundario{
+  border:0;
+  border-radius:999px;
+  min-height:58px;
+  padding:0 30px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1rem;
+  font-weight:800;
+  transition:.25s ease;
+}
+
+.btn-principal,
+.btn-consulta{
+  background:linear-gradient(135deg,var(--verde),var(--verde-2));
+  color:#fff;
+  box-shadow:0 18px 38px rgba(18,184,134,.28);
+}
+
+.btn-principal:hover,
+.btn-consulta:hover,
+.btn-secundario:hover{
+  transform:translateY(-3px);
+}
+
+.btn-secundario{
+  background:#fff;
+  color:var(--azul);
+  box-shadow:var(--sombra);
+}
+
+.btn-consulta{
+  margin-top:24px;
+  min-height:62px;
+}
+
+.full{
+  width:100%;
+}
+
+.hero-controles{
+  position:absolute;
+  left:50%;
+  bottom:28px;
+  transform:translateX(-50%);
+  z-index:5;
+  display:flex;
+  gap:10px;
+  background:rgba(255,255,255,.16);
+  padding:10px;
+  border-radius:999px;
+  backdrop-filter:blur(12px);
+}
+
+.hero-controles button{
+  width:42px;
+  height:11px;
+  border:0;
+  border-radius:999px;
+  background:rgba(255,255,255,.48);
+}
+
+.hero-controles button.ativo{
+  background:#fff;
+  width:62px;
+}
+
+/* INTRO */
+
+.intro-reservas{
+  padding:64px 0 28px;
+}
+
+.intro-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:34px;
+  align-items:end;
+}
+
+.eyebrow{
+  color:var(--rosa);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:.78rem;
+  margin-bottom:10px;
+  display:block;
+}
+
+.intro-grid h2,
+.produto-info h2,
+.ajuda-card h2{
+  font-size:clamp(2rem,4.1vw,3.4rem);
+  line-height:1.06;
+  color:var(--azul);
+  letter-spacing:-1.5px;
+  font-weight:900;
+}
+
+.intro-grid p,
+.produto-info p,
+.ajuda-card p{
+  font-size:1.05rem;
+  line-height:1.6;
+  color:#36566f;
+}
+
+/* PRODUTOS */
+
+.produto-section{
+  padding:62px 0;
+  scroll-margin-top:20px;
+}
+
+.produto-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:44px;
+  align-items:start;
+}
+
+.produto-grid.invertido{
+  grid-template-columns:1.1fr .9fr;
+}
+
+.produto-grid.invertido .produto-imagem{
+  order:2;
+}
+
+.produto-imagem{
+  position:relative;
+  top:0;
+  border-radius:34px;
+  overflow:hidden;
+  box-shadow:var(--sombra-forte);
+  height:520px;
+  background:#dff8ff;
+}
+
+.produto-imagem img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.produto-info{
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(217,236,245,.8);
+  box-shadow:var(--sombra);
+  border-radius:34px;
+  padding:32px;
+}
+
+.produto-limpo{
+  max-width:680px;
+}
+
+.produto-info h2{
+  margin-bottom:16px;
+}
+
+.produto-resumo{
+  font-size:1.12rem;
+  margin-bottom:24px;
+}
+
+.resumo-beneficios{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:26px 0;
+}
+
+.resumo-beneficios div{
+  background:#eefaff;
+  border:1px solid var(--borda);
+  border-radius:18px;
+  padding:18px;
+}
+
+.resumo-beneficios strong{
+  display:block;
+  color:var(--azul);
+  font-size:.98rem;
+  margin-bottom:6px;
+  font-weight:800;
+}
+
+.resumo-beneficios span{
+  color:#36566f;
+  font-size:.92rem;
+}
+
+.preco-destaque{
+  background:linear-gradient(135deg,#0b5c97,#073b66);
+  color:#fff;
+  border-radius:24px;
+  padding:24px;
+  margin:24px 0;
+  box-shadow:0 18px 38px rgba(7,59,102,.2);
+}
+
+.preco-destaque span,
+.preco-destaque small{
+  display:block;
+  color:rgba(255,255,255,.84);
+}
+
+.preco-destaque strong{
+  display:block;
+  font-size:2rem;
+  margin:6px 0;
+  font-weight:900;
+}
+
+.detalhes-reserva{
+  margin-top:22px;
+  display:grid;
+  gap:10px;
+}
+
+.detalhes-reserva details{
+  border:1px solid var(--borda);
+  border-radius:16px;
+  background:#fff;
+  overflow:hidden;
+}
+
+.detalhes-reserva summary{
+  cursor:pointer;
+  padding:16px 18px;
+  font-family:'Poppins',Arial,Helvetica,sans-serif;
+  font-weight:800;
+  color:var(--azul);
+  background:#f8fcff;
+}
+
+.detalhes-reserva ul{
+  padding:0 22px 18px 40px;
+  line-height:1.65;
+  color:#36566f;
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(7,59,102,.62);
+  backdrop-filter:blur(5px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+}
+
+.modal.open{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.modal-box{
+  width:min(900px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:30px;
+  padding:28px;
+  position:relative;
+  box-shadow:var(--sombra-forte);
+  transform:scale(.96);
+  transition:.25s;
+}
+
+.modal.open .modal-box{
+  transform:scale(1);
+}
+
+.modal-leitura{
+  width:min(760px,100%);
+}
+
+.fechar{
+  position:absolute;
+  top:14px;
+  right:14px;
+  border:0;
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  background:#eefaff;
+  color:var(--azul);
+  font-size:26px;
+}
+
+.modal-box h2{
+  font-family:'Poppins',Arial,Helvetica,sans-serif;
+  color:var(--azul);
+  font-size:2rem;
+  margin-bottom:10px;
+  padding-right:42px;
+  font-weight:900;
+}
+
+.modal-aviso{
+  background:#fff7d6;
+  border:1px solid #ffe08a;
+  color:#6d5200;
+  border-radius:18px;
+  padding:14px 16px;
+  line-height:1.45;
+  margin-bottom:18px;
+}
+
+.pre-consulta-lista{
+  display:grid;
+  gap:10px;
+  margin:18px 0;
+}
+
+.pre-consulta-item{
+  background:#eefaff;
+  border:1px solid var(--borda);
+  border-radius:16px;
+  padding:14px 16px;
+  color:var(--azul);
+  font-weight:700;
+  line-height:1.45;
+}
+
+.check-ciencia{
+  display:flex;
+  grid-template-columns:auto 1fr;
+  gap:10px;
+  align-items:flex-start;
+  background:#f1fff9;
+  border:1px solid #c7f5e5;
+  border-radius:16px;
+  padding:14px;
+  margin-top:18px;
+}
+
+.check-ciencia input{
+  width:auto;
+  min-height:auto;
+  margin-top:4px;
+}
+
+#btnContinuarConsulta:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+  transform:none;
+}
+
+form{
+  display:grid;
+  gap:14px;
+}
+
+label{
+  display:grid;
+  gap:7px;
+  color:var(--azul);
+  font-weight:900;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  border:1px solid var(--borda);
+  border-radius:15px;
+  min-height:50px;
+  padding:0 14px;
+  color:var(--texto);
+  outline:0;
+  background:#f8fcff;
+}
+
+textarea{
+  padding:14px;
+  resize:vertical;
+}
+
+.form-duplo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.form-triplo{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px;
+}
+
+/* FAQ */
+
+.faq-grupo{
+  margin-top:20px;
+}
+
+.faq-grupo h3{
+  color:var(--azul);
+  margin-bottom:10px;
+}
+
+.faq-grupo details{
+  border:1px solid var(--borda);
+  border-radius:16px;
+  background:#f8fcff;
+  margin-bottom:10px;
+  overflow:hidden;
+}
+
+.faq-grupo summary{
+  padding:14px 16px;
+  cursor:pointer;
+  font-family:'Poppins',Arial,Helvetica,sans-serif;
+  font-weight:800;
+  color:var(--azul);
+}
+
+.faq-grupo p{
+  padding:0 16px 16px;
+  color:#36566f;
+  line-height:1.55;
+}
+
+/* AJUDA */
+
+.botao-ajuda-flutuante{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:100;
+  border:0;
+  border-radius:999px;
+  background:var(--azul);
+  color:#fff;
+  font-family:'Poppins',Arial,Helvetica,sans-serif;
+  font-weight:800;
+  padding:15px 20px;
+  box-shadow:0 16px 38px rgba(0,0,0,.22);
+}
+
+/* FOOTER */
+
+.footer-reservas{
+  text-align:center;
+  padding:45px 20px;
+  background:#fff;
+  color:var(--azul);
+  border-top:1px solid var(--borda);
+}
+
+.footer-reservas img{
+  width:150px;
+  margin:0 auto 14px;
+}
+
+.footer-reservas p{
+  margin-bottom:10px;
+  color:#36566f;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+  .reservas-topo{
+    padding:14px;
+  }
+
+  .reservas-nav{
+    min-height:68px;
+    border-radius:26px;
+    padding:8px 14px;
+  }
+
+  .reservas-logo img{
+    width:120px;
+  }
+
+  .reservas-menu a{
+    display:none;
+  }
+
+  .reservas-menu button{
+    background:#eefaff;
+    font-size:.82rem;
+    padding:10px 12px;
+  }
+
+  .hero-reservas{
+    min-height:88svh;
+  }
+
+  .hero-conteudo{
+    padding-top:120px;
+  }
+
+  .hero-conteudo h1{
+    font-size:clamp(2.4rem,11vw,3.8rem);
+    line-height:1.08;
+    letter-spacing:-1.5px;
+  }
+
+  .hero-conteudo p{
+    font-size:1rem;
+  }
+
+  .hero-beneficios{
+    width:100%;
+    display:grid;
+    gap:8px;
+    padding:12px;
+    border-radius:20px;
+  }
+
+  .hero-beneficios span{
+    padding:8px 10px;
+    font-size:.9rem;
+  }
+
+  .hero-beneficios span + span{
+    border-left:0;
+    border-top:1px solid rgba(255,255,255,.28);
+  }
+
+  .intro-grid,
+  .produto-grid,
+  .produto-grid.invertido{
+    grid-template-columns:1fr;
+  }
+
+  .produto-grid.invertido .produto-imagem{
+    order:0;
+  }
+
+  .produto-imagem{
+    height:280px;
+    border-radius:26px;
+  }
+
+  .produto-info{
+    padding:24px;
+    border-radius:28px;
+  }
+
+  .resumo-beneficios,
+  .form-duplo,
+  .form-triplo{
+    grid-template-columns:1fr;
+  }
+
+  .preco-destaque strong{
+    font-size:1.6rem;
+  }
+
+  .botao-ajuda-flutuante{
+    bottom:12px;
+    right:12px;
+  }
+
+  .hero-slide{
+    background-position:center;
+  }
+
+  .hero-overlay{
+    background:linear-gradient(
+      180deg,
+      rgba(7,59,102,.70),
+      rgba(7,59,102,.86)
+    );
+  }
+}
