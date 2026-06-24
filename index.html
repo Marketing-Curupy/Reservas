@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,14 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Reservas Curupy | Hospedagem, Bangalôs e Quiosques</title>
-  <meta name="description" content="Consulte informações e disponibilidade para hospedagem, bangalôs e quiosques no Curupy Acqua Park." />
+  <meta name="description" content="Consulte disponibilidade para hospedagem, bangalôs e quiosques no Curupy Acqua Park." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
   <link rel="stylesheet" href="estilo.css" />
 </head>
 
@@ -47,27 +46,29 @@
         <h1>Hospede-se no Curupy</h1>
 
         <p>
-          Chalés completos com café da manhã e acesso ao parque aquático.
+          Conforto, café da manhã e acesso ao parque aquático para aproveitar sua estadia ao máximo.
         </p>
 
         <div class="hero-beneficios-card">
+          <div class="hero-beneficio">
+            <i class="fa-solid fa-water"></i>
+            <span>Parque aquático incluso</span>
+          </div>
+
           <div class="hero-beneficio">
             <i class="fa-solid fa-mug-hot"></i>
             <span>Café da manhã incluso</span>
           </div>
 
           <div class="hero-beneficio">
-            <i class="fa-solid fa-water"></i>
-            <span>Parque aquático incluso</span>
-          </div>
-        </div>
-
-               <div class="hero-beneficio">
             <i class="fa-regular fa-user"></i>
             <span>Até 4 hóspedes</span>
           </div>
+        </div>
 
-        <a class="btn-principal" href="#hospedagem">Consultar disponibilidade</a>
+        <button class="btn-principal" type="button" onclick="abrirPreConsulta('Hospedagem')">
+          Consultar disponibilidade
+        </button>
       </div>
     </div>
 
@@ -100,7 +101,9 @@
           </div>
         </div>
 
-        <a class="btn-principal" href="#bangalos">Conhecer bangalôs</a>
+        <button class="btn-principal" type="button" onclick="abrirPreConsulta('Bangalô')">
+          Consultar disponibilidade
+        </button>
       </div>
     </div>
 
@@ -133,14 +136,16 @@
           </div>
         </div>
 
-        <a class="btn-principal" href="#quiosques">Conhecer quiosques</a>
+        <button class="btn-principal" type="button" onclick="abrirPreConsulta('Quiosque')">
+          Consultar disponibilidade
+        </button>
       </div>
     </div>
 
     <div class="hero-controles">
-      <button class="ativo" onclick="mostrarSlide(0)" aria-label="Mostrar Hospedagem"></button>
-      <button onclick="mostrarSlide(1)" aria-label="Mostrar Bangalôs"></button>
-      <button onclick="mostrarSlide(2)" aria-label="Mostrar Quiosques"></button>
+      <button class="ativo" aria-label="Mostrar Hospedagem"></button>
+      <button aria-label="Mostrar Bangalôs"></button>
+      <button aria-label="Mostrar Quiosques"></button>
     </div>
   </section>
 
@@ -169,7 +174,7 @@
         <h2>Chalés para descansar dentro do Curupy</h2>
 
         <p class="produto-resumo">
-          Hospede-se com conforto e aproveite dois dias de parque aquático inclusos.
+          Hospede-se com conforto, café da manhã e acesso ao parque aquático incluso.
         </p>
 
         <div class="resumo-beneficios">
@@ -184,16 +189,37 @@
           </div>
 
           <div>
-            <strong>2 dias de parque</strong>
-            <span>Entrada e saída</span>
+            <strong>Parque incluso</strong>
+            <span>Durante a estadia</span>
           </div>
         </div>
 
-        <div class="preco-destaque">
-          <span>A partir de</span>
-          <strong>R$ 236 por pessoa</strong>
-          <small>Valor para associado. Visitante: R$ 315 por pessoa.</small>
-        </div>
+        ```html
+<div class="comparativo-precos">
+
+  <div class="preco-card preco-socio">
+    <span class="badge-associado">
+      💎 Valor de Associado
+    </span>
+
+    <strong>R$ 236</strong>
+    <span>por pessoa</span>
+  </div>
+
+  <div class="preco-card preco-visitante">
+    <span>Visitante</span>
+
+    <strong>R$ 315</strong>
+    <span>por pessoa</span>
+  </div>
+
+</div>
+
+<small class="economia-texto">
+  Economia de R$ 79 por pessoa para associados.
+</small>
+```
+
 
         <button class="btn-consulta" type="button" onclick="abrirPreConsulta('Hospedagem')">
           Consultar disponibilidade
@@ -259,11 +285,32 @@
           </div>
         </div>
 
-        <div class="preco-destaque">
-          <span>A partir de</span>
-          <strong>R$ 250 por bangalô</strong>
-          <small>Valor para sócio. Não sócio: R$ 300 por bangalô.</small>
-        </div>
+       ```html
+<div class="comparativo-precos">
+
+  <div class="preco-card preco-socio">
+    <span class="badge-associado">
+      💎 Valor de Associado
+    </span>
+
+    <strong>R$ 250</strong>
+    <span>por bangalô</span>
+  </div>
+
+  <div class="preco-card preco-visitante">
+    <span>Visitante</span>
+
+    <strong>R$ 300</strong>
+    <span>por bangalô</span>
+  </div>
+
+</div>
+
+<small class="economia-texto">
+  Economia de R$ 50 para associados.
+</small>
+```
+
 
         <button class="btn-consulta" type="button" onclick="abrirPreConsulta('Bangalô')">
           Consultar disponibilidade
@@ -326,11 +373,34 @@
           </div>
         </div>
 
-        <div class="preco-destaque">
-          <span>A partir de</span>
-          <strong>R$ 300 por quiosque</strong>
-          <small>Valor para sócio. Não sócio: R$ 600 por quiosque.</small>
-        </div>
+       ```html
+<div class="comparativo-precos">
+
+  <div class="preco-card preco-socio">
+    <span class="badge-associado">
+      💎 Valor de Associado
+    </span>
+
+    <strong>R$ 300</strong>
+    <span>por quiosque</span>
+
+    <small class="economia">
+      Economize R$ 300 na reserva
+    </small>
+  </div>
+
+  <div class="preco-card preco-visitante">
+    <span class="badge-visitante">
+      Visitante
+    </span>
+
+    <strong>R$ 600</strong>
+    <span>por quiosque</span>
+  </div>
+
+</div>
+```
+
 
         <button class="btn-consulta" type="button" onclick="abrirPreConsulta('Quiosque')">
           Consultar disponibilidade
@@ -435,40 +505,12 @@
       </label>
 
       <div class="form-duplo">
-        <label>Data de nascimento
-          <input id="nascimento" type="date">
-        </label>
-
-        <label>CPF
-          <input id="cpf" type="text">
-        </label>
-      </div>
-
-      <div class="form-duplo">
         <label>Telefone / WhatsApp
           <input id="telefone" type="tel" required>
         </label>
 
         <label>E-mail
           <input id="email" type="email">
-        </label>
-      </div>
-
-      <label>Endereço e número
-        <input id="endereco" type="text">
-      </label>
-
-      <div class="form-triplo">
-        <label>Bairro
-          <input id="bairro" type="text">
-        </label>
-
-        <label>Cidade
-          <input id="cidade" type="text">
-        </label>
-
-        <label>CEP
-          <input id="cep" type="text">
         </label>
       </div>
 
@@ -494,7 +536,7 @@
 
       <details>
         <summary>O que está incluso?</summary>
-        <p>Hospedagem, café da manhã e parque aquático no dia da entrada e saída.</p>
+        <p>Hospedagem, café da manhã e parque aquático incluso.</p>
       </details>
 
       <details>
