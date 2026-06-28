@@ -72,7 +72,7 @@ function iniciarCarrossel() {
     clearInterval(intervaloCarrossel);
   }
 
-  intervaloCarrossel = setInterval(proximoSlide, 5000);
+intervaloCarrossel = setInterval(proximoSlide, 180000);
 }
 
 function pausarCarrossel() {
