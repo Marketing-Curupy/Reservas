@@ -203,135 +203,258 @@ img{
 
 /* CARD DE BENEFÍCIOS DO HERO */
 
+/* =====================================================
+   HERO - BENEFÍCIOS
+===================================================== */
+
 .hero-beneficios-card{
-  display:none;
+    display:none;
 }
 
 .hero-beneficios-lista{
-  display:grid;
-  gap:12px;
-  margin-top:28px;
-  margin-bottom:34px;
+    display:grid;
+    gap:16px;
+    margin:32px 0 38px;
 }
 
 .hero-beneficio{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  color:#fff;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    color:#fff;
 }
 
 .hero-beneficio i{
-  width:26px;
-  height:26px;
-  border-radius:999px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(143,243,208,.18);
-  color:#8ff3d0;
-  font-size:13px;
+
+    width:30px;
+    height:30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(143,243,208,.18);
+
+    color:#8ff3d0;
+
+    font-size:.9rem;
+
+    flex-shrink:0;
 }
 
 .hero-beneficio span{
-  font-size:1rem;
-  font-weight:700;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    letter-spacing:.2px;
 }
 
-.hero-acoes{
-  display:flex;
-  align-items:center;
-  gap:22px;
-  flex-wrap:wrap;
+/* =====================================================
+   DICA ABAIXO DO BOTÃO
+===================================================== */
+
+.hero-dica{
+
+    margin-top:18px;
+
+    max-width:470px;
+
+    font-size:.92rem;
+
+    line-height:1.5;
+
+    color:rgba(255,255,255,.78);
+
+    font-weight:400;
 }
 
-.hero-link{
-  color:#fff;
-  font-family:'Poppins',Arial,Helvetica,sans-serif;
-  font-weight:800;
-  font-size:.98rem;
-  border-bottom:2px solid rgba(255,255,255,.55);
-  padding-bottom:4px;
-  transition:.25s;
+.hero-dica strong{
+    color:#fff;
+    font-weight:700;
 }
 
-.hero-link:hover{
-  color:#8ff3d0;
-  border-color:#8ff3d0;
-}
-
-/* BOTÕES */
-
-.btn-principal,
-.btn-consulta,
-.btn-secundario{
-  border:0;
-  border-radius:999px;
-  min-height:58px;
-  padding:0 30px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1rem;
-  font-weight:800;
-  transition:.25s ease;
-}
+/* =====================================================
+   BOTÕES
+===================================================== */
 
 .btn-principal,
 .btn-consulta{
-  background:linear-gradient(135deg,var(--verde),var(--verde-2));
-  color:#fff;
-  box-shadow:0 18px 38px rgba(18,184,134,.28);
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    min-height:60px;
+
+    padding:0 34px;
+
+    border:none;
+    border-radius:999px;
+
+    background:linear-gradient(
+        135deg,
+        #18c98d 0%,
+        #0ca678 100%
+    );
+
+    color:#fff;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 14px 32px rgba(18,184,134,.32),
+        inset 0 1px 0 rgba(255,255,255,.18);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
 }
 
 .btn-principal:hover,
-.btn-consulta:hover,
-.btn-secundario:hover{
-  transform:translateY(-3px);
+.btn-consulta:hover{
+
+    transform:translateY(-4px);
+
+    filter:brightness(1.05);
+
+    box-shadow:
+        0 18px 42px rgba(18,184,134,.45),
+        inset 0 1px 0 rgba(255,255,255,.22);
+}
+
+.btn-principal:active,
+.btn-consulta:active{
+
+    transform:translateY(-1px);
+
+    box-shadow:
+        0 10px 24px rgba(18,184,134,.28);
+}
+
+.btn-principal i,
+.btn-consulta i{
+
+    font-size:1rem;
 }
 
 .btn-secundario{
-  background:#fff;
-  color:var(--azul);
-  box-shadow:var(--sombra);
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-height:60px;
+
+    padding:0 34px;
+
+    border-radius:999px;
+
+    border:none;
+
+    background:#fff;
+
+    color:var(--azul);
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    box-shadow:var(--sombra);
+
+    transition:.25s;
 }
 
-.btn-consulta{
-  margin-top:24px;
-  min-height:62px;
+.btn-secundario:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 18px 36px rgba(7,59,102,.18);
 }
 
 .full{
-  width:100%;
+    width:100%;
 }
 
-/* CONTROLES HERO */
+/* =====================================================
+   CONTROLES DO CARROSSEL
+===================================================== */
 
 .hero-controles{
-  position:absolute;
-  left:50%;
-  bottom:28px;
-  transform:translateX(-50%);
-  z-index:5;
-  display:flex;
-  gap:10px;
-  background:rgba(255,255,255,.16);
-  padding:10px;
-  border-radius:999px;
-  backdrop-filter:blur(12px);
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:28px;
+
+    transform:translateX(-50%);
+
+    z-index:10;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 12px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.18);
 }
 
 .hero-controles button{
-  width:42px;
-  height:11px;
-  border:0;
-  border-radius:999px;
-  background:rgba(255,255,255,.48);
+
+    width:38px;
+
+    height:8px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.38);
+
+    cursor:pointer;
+
+    transition:.35s ease;
+}
+
+.hero-controles button:hover{
+
+    background:rgba(255,255,255,.65);
 }
 
 .hero-controles button.ativo{
-  background:#fff;
-  width:62px;
+
+    width:64px;
+
+    background:#ffffff;
 }
 
 /* INTRO */
