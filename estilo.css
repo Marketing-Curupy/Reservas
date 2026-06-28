@@ -204,40 +204,60 @@ img{
 /* CARD DE BENEFÍCIOS DO HERO */
 
 .hero-beneficios-card{
-  margin-top:22px;
-  margin-bottom:28px;
-  width:100%;
-  max-width:510px;
-  background:rgba(255,255,255,.11);
-  backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:24px;
-  overflow:hidden;
-  box-shadow:0 18px 42px rgba(0,0,0,.18);
+  display:none;
+}
+
+.hero-beneficios-lista{
+  display:grid;
+  gap:12px;
+  margin-top:28px;
+  margin-bottom:34px;
 }
 
 .hero-beneficio{
   display:flex;
   align-items:center;
-  gap:14px;
-  padding:15px 20px;
+  gap:12px;
   color:#fff;
 }
 
-.hero-beneficio + .hero-beneficio{
-  border-top:1px solid rgba(255,255,255,.13);
-}
-
 .hero-beneficio i{
-  width:24px;
-  font-size:18px;
+  width:26px;
+  height:26px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(143,243,208,.18);
   color:#8ff3d0;
-  text-align:center;
+  font-size:13px;
 }
 
 .hero-beneficio span{
-  font-size:.95rem;
+  font-size:1rem;
   font-weight:700;
+}
+
+.hero-acoes{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+}
+
+.hero-link{
+  color:#fff;
+  font-family:'Poppins',Arial,Helvetica,sans-serif;
+  font-weight:800;
+  font-size:.98rem;
+  border-bottom:2px solid rgba(255,255,255,.55);
+  padding-bottom:4px;
+  transition:.25s;
+}
+
+.hero-link:hover{
+  color:#8ff3d0;
+  border-color:#8ff3d0;
 }
 
 /* BOTÕES */
